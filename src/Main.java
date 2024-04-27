@@ -1,7 +1,8 @@
 public class Main {
+    public static Employee[] empolyees = new Employee[10];
 
     public static void main(String[] args) {
-        Employee[] empolyees = new Employee[10];
+
         empolyees[0] = new Employee("Иванов Иван Иванович", 2, 75000);
         empolyees[1] = new Employee("Петрова Ольга Владимировна", 1, 80000);
         empolyees[2] = new Employee("Сидоров Михаил Олегович", 3, 82000);
@@ -13,37 +14,68 @@ public class Main {
         empolyees[8] = new Employee("Терентьева Кристина Андреевна", 3, 100000);
         empolyees[9] = new Employee("Федосеев Леонтий Львович", 1, 120000);
 
-        int averageSalary = 0;
-        int salaryExpenses = 0;
-        int maximalSalary = 0;
-        int minimalSalary = 1000000;
-        for (int i = 0; i < empolyees.length; i++) {
-            salaryExpenses = salaryExpenses + empolyees[i].getSalary();
-        }
-        System.out.println("Общие расходы на зарплату сотрудников = " + salaryExpenses);
+        printEmployee();
+        salaryExpenses();
+        averageSalary();
+        maximalSalary();
+        minimalSalary();
+        nameEmployee();
 
+    }
+
+    public static void printEmployee() {
         for (int i = 0; i < empolyees.length; i++) {
-            if (empolyees[i].getSalary() < minimalSalary) {
-                minimalSalary = empolyees[i].getSalary();
-            } else if (empolyees[i].getSalary() > maximalSalary) {
-                maximalSalary = empolyees[i].getSalary();
-            }
-        }
-        for (int i = 0; i < empolyees.length; i++) {
-            if (minimalSalary == empolyees[i].getSalary()) {
-                System.out.println("Cотрудник с минмвльной зарплатой = " + empolyees[i]);
-            } else if (maximalSalary == empolyees[i].getSalary()) {
-                System.out.println("Cотрудник с максимальной зарплатой = " + empolyees[i]);
-            }
-        }
-        averageSalary = salaryExpenses / 2;
-        System.out.println("Средня зарплата по компании = " + averageSalary);
-        for (int i = 0; i < empolyees.length; i++) {
-            ;
             System.out.println(empolyees[i]);
         }
     }
+
+    public static void salaryExpenses() {
+        int allExpenses = 0;
+        for (int i = 0; i < empolyees.length; i++) {
+            allExpenses = allExpenses + empolyees[i].getSalary();
+        }
+        System.out.println("Общие расходы на зарплату сотрудников = " + allExpenses);
+    }
+
+    public static void averageSalary() {
+        int average = 0;
+        int allExpenses = 0;
+        for (int i = 0; i < empolyees.length; i++) {
+            allExpenses = allExpenses + empolyees[i].getSalary();
+        }
+        average = allExpenses / 2;
+        System.out.println("Средня зарплата по компании = " + average);
+    }
+
+    public static void maximalSalary() {
+        int max = 0;
+        for (int i = 0; i < empolyees.length; i++) {
+            if (max < empolyees[i].getSalary()) {
+                max = empolyees[i].getSalary();
+            }
+        }
+        System.out.println("Cотрудник с максимальной зарплатой = " + max);
+    }
+
+    public static void minimalSalary() {
+        int minimalSalary = 1000000;
+        for (int i = 0; i < empolyees.length; i++) {
+            if (empolyees[i].getSalary() < minimalSalary) {
+                minimalSalary = empolyees[i].getSalary();
+            }
+        }
+        System.out.println("Cотрудник с минмвльной зарплатой = " + minimalSalary);
+    }
+
+    public static void nameEmployee() {
+        for (int i = 0; i < empolyees.length; i++) {
+            System.out.println("Ф.И.О. Сотрудника : " + empolyees[i].getFullName());
+        }
+    }
 }
+
+
+
 
 
 
