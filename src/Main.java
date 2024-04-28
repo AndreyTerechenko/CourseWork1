@@ -43,7 +43,7 @@ public class Main {
         for (int i = 0; i < empolyees.length; i++) {
             allExpenses = allExpenses + empolyees[i].getSalary();
         }
-        average = allExpenses / 2;
+        average = allExpenses / empolyees.length;
         System.out.println("Средня зарплата по компании = " + average);
     }
 
